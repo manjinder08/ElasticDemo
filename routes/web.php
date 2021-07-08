@@ -1,5 +1,7 @@
 <?php
-
+use App\Http\Controllers\Controller;
+use App\Articles\ArticlesRepository;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/dashboard', function () {      //default
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+require __DIR__.'/auth.php';
+
+ Route::get('/list',[Controller::class,'list']);
+
+
+// Route::get('/dashboard', function () {             //simple fetch
+//     return view('dashboard', [
+//         'articles' => App\Models\Article::all(),
+//     ]);
+// })->middleware(['auth'])->name('dashboard'); 
+
+
+// Route::get('/Dash', function (ArticlesRepository $repository) {           //simple search
+//     return view('Dash', [
+//         'articles' => request()->has('q')
+//             ? $repository->search(request('q'))
+//             : App\Models\Article::all(),
+//     ]);
+// }); 
+
+// Route::get('search', function (ArticlesRepository $repository) {
+//     $articles = $repository->search(request('q'));
+
+//     return view('Dash', [
+//         'articles' => $articles,
+//     ]);
+// });
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('Dash', [
+        'articles' =>  App\Models\Article::all(),
+    ]);
 });
