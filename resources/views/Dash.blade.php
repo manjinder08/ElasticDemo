@@ -31,6 +31,7 @@
                 @empty
                     <p>No articles found</p>
                 @endforelse
+                {{ $article->links() }}
             </div>
         </div>
     </div>

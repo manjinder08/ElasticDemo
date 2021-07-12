@@ -14,15 +14,15 @@
     }
 
     public function getSearchIndex()
-    { echo "hellloooo<br>";
+    { 
         return $this->getTable();
         
     }
 
     public function getSearchType()
-    {echo "helo02";
+    {
         if (property_exists($this, 'useSearchType')) {
-            echo "helo02";
+            
             return $this->useSearchType;
         }
 
@@ -30,12 +30,20 @@
     }
 
     public function toSearchArray()
-    {echo "helo02";
-        // By having a custom method that transforms the model
-        // to a searchable array allows us to customize the
-        // data that's going to be searchable per model.
-        return $this->toArray();
+    {
+            return $this->toArray();
     }
+
+
+
+
+
+
+
+
+
+
+    
     // public function elasticsearchIndex(Client $elasticsearchClient)
     // { 
     //     $elasticsearchClient->index([

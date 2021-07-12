@@ -11,12 +11,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function list(){
-        $article=Article::all();
-        $data=[
-            'articles'=> $article
-        ];
-        dd($article);
-        return view('List',$data);
-    }
 }

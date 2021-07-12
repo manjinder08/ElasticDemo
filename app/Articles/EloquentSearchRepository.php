@@ -1,6 +1,6 @@
 <?php
  namespace App\Articles;
- use App\Article;
+ use App\Models\Article;
  use Illuminate\Database\Eloquent\Collection;
 
  class EloquentSearchRepository implements ArticlesRepository
@@ -11,6 +11,7 @@
              
             ->Where('body', 'LIKE', "%{$query}%")
             ->orWhere('title', 'LIKE', "%{$query}%")
+            ->orWhere('tags', 'LIKE', "%{$query}%")
              ->get();
 
      }

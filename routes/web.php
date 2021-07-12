@@ -24,7 +24,23 @@ Route::get('/dashboard', function () {      //default
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 
- Route::get('/list',[Controller::class,'list']);
+Route::get('search', function (ArticlesRepository $repository) {
+    $articles = $repository->search(request('q'));
+  
+
+    return view('Dash', [
+        'articles' => $articles,
+    ]);
+});
+
+
+Route::get('/', function () {
+    return view('Dash', [
+        'articles' =>  App\Models\Article::all(),
+    ]);
+});
+
+
 
 
 // Route::get('/dashboard', function () {             //simple fetch
@@ -41,18 +57,3 @@ require __DIR__.'/auth.php';
 //             : App\Models\Article::all(),
 //     ]);
 // }); 
-
-// Route::get('search', function (ArticlesRepository $repository) {
-//     $articles = $repository->search(request('q'));
-
-//     return view('Dash', [
-//         'articles' => $articles,
-//     ]);
-// });
-
-
-Route::get('/', function () {
-    return view('Dash', [
-        'articles' =>  App\Models\Article::all(),
-    ]);
-});

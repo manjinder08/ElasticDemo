@@ -27,7 +27,7 @@ class ElasticsearchObserver
      * @param  \App\Models\Article  $article
      * @return void
      */
-    public function created(Article $article)
+    public function created()
     {
         //
     }
@@ -38,7 +38,7 @@ class ElasticsearchObserver
      * @param  \App\Models\Article  $article
      * @return void
      */
-    public function updated(Article $article)
+    public function updated()
     {
         //
     }
@@ -64,7 +64,7 @@ class ElasticsearchObserver
      * @param  \App\Models\Article  $article
      * @return void
      */
-    public function restored(Article $article)
+    public function restored()
     {
         //
     }
@@ -75,7 +75,7 @@ class ElasticsearchObserver
      * @param  \App\Models\Article  $article
      * @return void
      */
-    public function forceDeleted(Article $article)
+    public function forceDeleted()
     {
         //
     }
