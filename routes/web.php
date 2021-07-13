@@ -2,6 +2,7 @@
 use App\Http\Controllers\Controller;
 use App\Articles\ArticlesRepository;
 use App\Models\Article;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,19 +42,13 @@ Route::get('/', function () {
 });
 
 
-
-
-// Route::get('/dashboard', function () {             //simple fetch
-//     return view('dashboard', [
-//         'articles' => App\Models\Article::all(),
-//     ]);
-// })->middleware(['auth'])->name('dashboard'); 
-
-
-// Route::get('/Dash', function (ArticlesRepository $repository) {           //simple search
-//     return view('Dash', [
-//         'articles' => request()->has('q')
-//             ? $repository->search(request('q'))
-//             : App\Models\Article::all(),
-//     ]);
-// }); 
+Route::get('/redis', function(){
+    
+    if($articles=Redis::get('articles.all')){        
+        return json_decode($articles);
+    }
+    
+    $articles = Article::all();
+    Redis::set('Article.all', $articles);
+    return $articles;
+});
