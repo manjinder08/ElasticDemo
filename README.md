@@ -47,7 +47,7 @@ Then Make some changes in Migration table 'create_articles_table'  migration ins
  });</b> </br>
  </br>
  Article table looks like this (App/Models/Article.php).</br>
-  <?php</br>
+ <b> <?php</br>
  namespace App\Models;</br>
  use Illuminate\Database\Eloquent\Factories\HasFactory;</br>
  use Illuminate\Database\Eloquent\Model;</br>
@@ -57,10 +57,10 @@ Then Make some changes in Migration table 'create_articles_table'  migration ins
      protected $casts = [</br>
          'tags' => 'json',</br>
      ];</br>
- } </br>
+ } </b></br>
 </br>
 Add some dummy data in table using <b>Database Seerder</b> at 'database/seeder/' looks like</br>
-<?php</br>
+<b><?php</br>
  namespace Database\Seeders;</br>
  use App\Models\Article;</br>
  use Illuminate\Database\Seeder;</br>
@@ -70,10 +70,10 @@ Add some dummy data in table using <b>Database Seerder</b> at 'database/seeder/'
      {</br>
          Article::factory()->times(50)->create();</br>
      }</br>
- } </br>
+ } </b></br>
 </br>
 The seeder use laravel model factory to create 50 fake articles for us. Open up `database/factories/ArticleFactory.php` </br.
-<?php</br></br>
+<b><?php</br></br>
  namespace Database\Factories;</br>
  use App\Models\Article;</br>
  use Illuminate\Database\Eloquent\Factories\Factory;</br>
@@ -91,7 +91,7 @@ The seeder use laravel model factory to create 50 fake articles for us. Open up 
                  ->all(),</br>
          ];
      }
- } 
+ } </b>
 </br>
 <h4>Step 5</h4>
 Let's fresh the migrate and seed the 50 fake articles in table.</br>
