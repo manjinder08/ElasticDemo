@@ -21,3 +21,13 @@
     <td>^1.1</td>
    </tr>
 </table>
+
+<h3>Installing ElasticSearch in laravel</h3>
+<h4>Step 1</h4>
+Install ElasticSearch on system.
+link-> https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
+<h4>Step 2</h4>
+Make laravel project.
+<text> composer require-project laravel/laravel ElasticDemo</text>
+<h4>Step 3</h4>
+
