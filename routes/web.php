@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\MyController;
 use App\Articles\ArticlesRepository;
 use App\Models\Article;
 use Illuminate\Support\Facades\Redis;
@@ -42,13 +42,25 @@ Route::get('/', function () {
 });
 
 
-Route::get('/redis', function(){
+Route::get('/redis', function () {
+    return view('/RedisSearch', [
+        'articles' =>  App\Models\Article::all(),
+    ]);
+});
+
+Route::get('/redissearch', function(MyController $r){
     
-    if($articles=Redis::get('articles.all')){        
-        return json_decode($articles);
+    if($a=Redis::get('data')){  
+        echo "here..........";
+
+        dd($a);      
+        //return json_decode($a);
     }
     
-    $articles = Article::all();
-    Redis::set('Article.all', $articles);
-    return $articles;
+    $a = $r->Searchredis(request('query'));
+    
+    // dd($a);
+ // return $a;
+    // Redis::setex('data', 60*24, $a);
+    // return json_decode($a);
 });
