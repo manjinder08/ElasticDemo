@@ -109,7 +109,7 @@ interface ArticlesRepository </br>
     public function search(string $query=''): Collection; </br>
 }</b> </br>
 
-Next:- Make <b>EloquentSearchRepository<b>  in 'App/Article'. </br>
+Next:- Make <b>EloquentSearchRepository</b>  in 'App/Article'. </br>
 code like :-</br>
 <b>namespace App\Articles;</br>
  class EloquentSearchRepository implements ArticlesRepository</br>
