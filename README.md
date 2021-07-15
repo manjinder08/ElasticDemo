@@ -22,17 +22,17 @@
    </tr>
 </table>
 
-<h3>Installing ElasticSearch in laravel</h3>
-<h4>Step 1</h4>
+<h2>Installing ElasticSearch in laravel</h2>
+<h3>Step 1 :</h3>
 Install ElasticSearch on system.</br>
 <b>link-> </b> https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
-<h4>Step 2</h4>
+<h3>Step 2 :</h3>
 Make laravel project.</br>
 <b>Command-> </b> composer require-project laravel/laravel ElasticDemo
-<h4>Step 3</h4>
+<h3>Step 3 :</h3>
 Install ElasticSearch in project.</br>
 <b>Command-> </b> composer require elasticsearch/elasticsearch.
-<h4>Step 4</h4>
+<h3>Step 4 :</h3>
 Make model and factory via artisan.</br>
 <b>Command-></b> php artisan make:model -mf Article </br>
 Then Make some changes in Migration table 'create_articles_table'  migration inside the `database/migrations/` folder. </br>
@@ -95,12 +95,12 @@ The seeder use laravel model factory to create 50 fake articles for us. Open up 
                              }
                          } </b>
 </br>
-<h4>Step 5</h4>
+<h3>Step 5 :</h3>
 
 Let's fresh the migrate and seed the 50 fake articles in table.</br>
 <b>command-></b> php artisan migrate:fresh --seed </br>
 
-<h4>Step 6</h4>
+<h3>Step 6 :</h3>
 make <b>ArticlesRepository</b> in 'App/Article'. </br>
 code like this-></br>
 <b>namespace App\Articles; </br>
@@ -125,7 +125,7 @@ code like :-</br>
 
      }</br>
  } </br> </b>
-<h4>Step 7</h4>
+<h3>Step 7 :</h3>
 <h3>Integrating Elasticsearch </h3>
 Here we are going to use <b>Model Observer</b> .</br>
 <b>Command-></b>php artisan make:observer ElasticsearchObserver --model=Article  </br>
@@ -135,7 +135,7 @@ ElasticsearchObserver.php file is in observers where you can find the code. </br
 Now we make <b>Searchable</b> Trait in same observer directory.
 </br> follow same directory for searchable.php code.
 
-<h4>Step 8</h4>
+<h3>Step 8 :</h3>
 
 Now we use the searchable trait in <b>Article.php</b> model. code like:- </br>
 <b><?php
@@ -157,12 +157,12 @@ class Article extends Model</br>
 </b>
 </br>
 
- <h4>Step 9</h4>
+ <h3>Step 9 :</h3>
 <b>The Elasticsearch Repository</b>
 now we are ready to use <b>Elasticsearch</b> with our Article model. We have <b>eloquent repository</b> as a <b>backup</b> ,if our elastic search fail.</br>
 code is in <b>App/Articles/ElasticsearchRepository.php</b> </br>
 
- <h4>Step 10</h4>
+ <h3>Step 10 :</h3>
 Now we are going to register our repositories in <b>AppServiceProvider</b> which is in App/Providers. </br>
  code like:- </br>
 <b>
@@ -192,7 +192,7 @@ public function register() </br>
     }</br>
 </b>
 
-<h4>Step 11</h4>
+<h3>Step 11 :</h3>
 Code is almost ready.We need to finish the configuration. <b>config/services.php:</b> </br>
 <b>
                         <?php </br>
@@ -212,17 +212,17 @@ Now set the environment variables in <b> .env </b>
 <b>ELASTICSEARCH_ENABLED=true </br>
 ELASTICSEARCH_HOSTS="localhost:9200"</b></br>
 
-<h4>Step 12</h4>
+<h3>Step 12 :</h3>
 
 We are going to create custom artisan command for reindex the elastic search schema. </br>
 <b>Command-></b>  php artisan make:command ReindexCommand --command="search:reindex"</b></br>
 Now open and edit it (App/Console/Commands/ReindexCommand.php). </br>
 
 
-<h4>Step 13</h4>
+<h3>Step 13 :</h3>
 At last we jus run the last artisan command which we added. </br>
 <b>Command-></b> php artisan search:reindex. </br>
 <h4>The ElasticSearch project is ready for search. You can find the full code above.<h4>
  
-<h3>Redis</h3>
+<h2>Redis</h2>
 
