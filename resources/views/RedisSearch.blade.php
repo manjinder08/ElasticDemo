@@ -2,17 +2,17 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Articles <small>({{ $articles->count() }})</small>
+                Articles <small></small>
             </div>
             <div class="card-body">
-                <form action="{{ url('search') }}" method="get">
+                <form action="{{ url('redissearch') }}" method="get">
                     <div class="form-group">
                         <input
                             type="text"
-                            name="q"
+                            name="query"
                             class="form-control"
                             placeholder="Search..."
-                            value="{{ request('q') }}"
+                            value="{{ request('query') }}"
                         />
                     </div>
                 </form>

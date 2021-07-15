@@ -22,10 +22,9 @@ class ElasticsearchRepository implements ArticlesRepository
         return $this->buildCollection($items);
     }
     private function searchOnElasticsearch(string $query = ''): array
-    {
+    { 
         $model = new Article;
-
-        $items = $this->elasticsearch->search([
+            $items = $this->elasticsearch->search([
             'index' => $model->getSearchIndex(),
             'type' => $model->getSearchType(),
             'body' => [
@@ -37,8 +36,7 @@ class ElasticsearchRepository implements ArticlesRepository
                 ],
             ],
         ]);
-
-        return $items;
+       return $items;
     }
 
     private function buildCollection(array $items): Collection

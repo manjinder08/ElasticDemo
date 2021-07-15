@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 use App\Articles;
-use App\Models\Artical;
+use App\Models\Article;
 use Elasticsearch\Client;
 use Illuminate\Console\Command;
 

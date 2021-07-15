@@ -1,7 +1,8 @@
 <?php
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\MyController;
 use App\Articles\ArticlesRepository;
 use App\Models\Article;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,35 +25,42 @@ Route::get('/dashboard', function () {      //default
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 
- Route::get('/list',[Controller::class,'list']);
+Route::get('search', function (ArticlesRepository $repository) {
+    $articles = $repository->search(request('q'));
+  
 
-
-// Route::get('/dashboard', function () {             //simple fetch
-//     return view('dashboard', [
-//         'articles' => App\Models\Article::all(),
-//     ]);
-// })->middleware(['auth'])->name('dashboard'); 
-
-
-// Route::get('/Dash', function (ArticlesRepository $repository) {           //simple search
-//     return view('Dash', [
-//         'articles' => request()->has('q')
-//             ? $repository->search(request('q'))
-//             : App\Models\Article::all(),
-//     ]);
-// }); 
-
-// Route::get('search', function (ArticlesRepository $repository) {
-//     $articles = $repository->search(request('q'));
-
-//     return view('Dash', [
-//         'articles' => $articles,
-//     ]);
-// });
+    return view('Dash', [
+        'articles' => $articles,
+    ]);
+});
 
 
 Route::get('/', function () {
     return view('Dash', [
         'articles' =>  App\Models\Article::all(),
     ]);
+});
+
+
+Route::get('/redis', function () {
+    return view('/RedisSearch', [
+        'articles' =>  App\Models\Article::all(),
+    ]);
+});
+
+Route::get('/redissearch', function(MyController $r){
+    
+    if($a=Redis::get('data')){  
+        echo "here..........";
+
+        dd($a);      
+        //return json_decode($a);
+    }
+    
+    $a = $r->Searchredis(request('query'));
+    
+    // dd($a);
+ // return $a;
+    // Redis::setex('data', 60*24, $a);
+    // return json_decode($a);
 });
