@@ -36,14 +36,14 @@ Install ElasticSearch in project.</br>
 Make model and factory via artisan.</br>
 <b>Command-></b> php artisan make:model -mf Article </br>
 Then Make some changes in Migration table 'create_articles_table'  migration inside the `database/migrations/` folder.</br>
-<p style="color:#008000">
+<mark>
  Schema::create('articles', function (Blueprint $table) { </br>
      $table->id();</br>
      $table->string('title');</br>
      $table->text('body');</br>
      $table->json('tags');</br>
      $table->timestamps();</br>
- }); </p></br>
+ }); </mark></br>
  </br>
  Article table looks like this (App/Models/Article.php).</br>
   <?php</br>
