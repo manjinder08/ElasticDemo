@@ -35,15 +35,16 @@ Install ElasticSearch in project.</br>
 <h4>Step 4</h4>
 Make model and factory via artisan.</br>
 <b>Command-></b> php artisan make:model -mf Article </br>
-Then Make some changes in Migration table 'create_articles_table'  migration inside the `database/migrations/` folder.</br>
-<mark>
+Then Make some changes in Migration table 'create_articles_table'  migration inside the `database/migrations/` folder. </br>
+</br>
+<b>
  Schema::create('articles', function (Blueprint $table) { </br>
      $table->id();</br>
      $table->string('title');</br>
      $table->text('body');</br>
      $table->json('tags');</br>
      $table->timestamps();</br>
- }); </mark></br>
+ });</b> </br>
  </br>
  Article table looks like this (App/Models/Article.php).</br>
   <?php</br>
@@ -95,6 +96,8 @@ The seeder use laravel model factory to create 50 fake articles for us. Open up 
 <h4>Step 5</h4>
 Let's fresh the migrate and seed the 50 fake articles in table.</br>
 <b>command-></b> php artisan migrate:fresh --seed </br>
+<h4>Step 6</h4>
+
 
  
 
