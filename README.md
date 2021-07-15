@@ -124,7 +124,7 @@ code like :-</br>
              ->get();</br>
 
      }</br>
- } </br> <b>
+ } </br> </b>
 <h4>Step 7</h4>
 <h3>Integrating Elasticsearch </h3>
 Here we are going to use <b>Model Observer</b> .</br>
@@ -192,5 +192,37 @@ public function register() </br>
     }</br>
 </b>
 
-<h4>
+<h4>Step 11</h4>
+Code is almost ready.We need to finish the configuration. <b>config/services.php:</b> </br>
+<b>
+                        <?php </br>
+
+                        return [ </br>
+                            // ...
+                            'search' => [  </br>
+                                'enabled' => env('ELASTICSEARCH_ENABLED', false),   </br>
+                                'hosts' => explode(',', env('ELASTICSEARCH_HOSTS')),  </br>
+                            ],  </br>
+                        ];  </br>
+</b>
+</br>
+
+Now set the environment variables in <b> .env </b>
+</br>
+<b>ELASTICSEARCH_ENABLED=true </br>
+ELASTICSEARCH_HOSTS="localhost:9200"</b></br>
+
+<h4>Step 12</h4>
+
+We are going to create custom artisan command for reindex the elastic search schema. </br>
+<b>Command-></b>  php artisan make:command ReindexCommand --command="search:reindex"</b></br>
+Now open and edit it (App/Console/Commands/ReindexCommand.php). </br>
+
+
+<h4>Step 13</h4>
+At last we jus run the last artisan command which we added. </br>
+<b>Command-></b> php artisan search:reindex. </br>
+<h4>The ElasticSearch project is ready for search. You can find the full code above.<h4>
+ 
+<h3>Redis</h3>
 
