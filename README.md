@@ -72,8 +72,8 @@ Add some dummy data in table using <b>Database Seerder</b> at 'database/seeder/'
      }</br>
  } </b></br>
 </br>
-The seeder use laravel model factory to create 50 fake articles for us. Open up `database/factories/ArticleFactory.php` </br.
-<b><?php</br></br>
+The seeder use laravel model factory to create 50 fake articles for us. Open up `database/factories/ArticleFactory.php` </br>
+<b><?php</br>
  namespace Database\Factories;</br>
  use App\Models\Article;</br>
  use Illuminate\Database\Eloquent\Factories\Factory;</br>
