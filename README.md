@@ -24,10 +24,11 @@
 
 <h3>Installing ElasticSearch in laravel</h3>
 <h4>Step 1</h4>
-Install ElasticSearch on system.
+Install ElasticSearch on system.</br>
 link-> https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
 <h4>Step 2</h4>
-Make laravel project.
-<text> composer require-project laravel/laravel ElasticDemo</text>
+Make laravel project.</br>
+<b>Command</b> composer require-project laravel/laravel ElasticDemo
 <h4>Step 3</h4>
+
 
