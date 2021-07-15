@@ -37,57 +37,57 @@ Make model and factory via artisan.</br>
 <b>Command-></b> php artisan make:model -mf Article </br>
 Then Make some changes in Migration table 'create_articles_table'  migration inside the `database/migrations/` folder.</br>
 
- Schema::create('articles', function (Blueprint $table) {
-     $table->id();
-     $table->string('title');
-     $table->text('body');
-     $table->json('tags');
-     $table->timestamps();
- }); 
+ Schema::create('articles', function (Blueprint $table) { </br>
+     $table->id();</br>
+     $table->string('title');</br>
+     $table->text('body');</br>
+     $table->json('tags');</br>
+     $table->timestamps();</br>
+ }); </br>
  </br>
  Article table looks like this (App/Models/Article.php).</br>
-  <?php
- namespace App\Models;
- use Illuminate\Database\Eloquent\Factories\HasFactory;
- use Illuminate\Database\Eloquent\Model;
- class Article extends Model
- {
-     use HasFactory;
-     protected $casts = [
-         'tags' => 'json',
-     ];
- } 
+  <?php</br>
+ namespace App\Models;</br>
+ use Illuminate\Database\Eloquent\Factories\HasFactory;</br>
+ use Illuminate\Database\Eloquent\Model;</br>
+ class Article extends Model</br>
+ {</br>
+     use HasFactory;</br>
+     protected $casts = [</br>
+         'tags' => 'json',</br>
+     ];</br>
+ } </br>
 </br>
 Add some dummy data in table using <b>Database Seerder</b> at 'database/seeder/' looks like</br>
-<?php
- namespace Database\Seeders;
- use App\Models\Article;
- use Illuminate\Database\Seeder;
- class DatabaseSeeder extends Seeder
- {
-     public function run()
-     {
-         Article::factory()->times(50)->create();
-     }
- } 
+<?php</br>
+ namespace Database\Seeders;</br>
+ use App\Models\Article;</br>
+ use Illuminate\Database\Seeder;</br>
+ class DatabaseSeeder extends Seeder</br>
+ {</br>
+     public function run()</br>
+     {</br>
+         Article::factory()->times(50)->create();</br>
+     }</br>
+ } </br>
 </br>
 The seeder use laravel model factory to create 50 fake articles for us. Open up `database/factories/ArticleFactory.php` </br.
-<?php
- namespace Database\Factories;
- use App\Models\Article;
- use Illuminate\Database\Eloquent\Factories\Factory;
- class ArticleFactory extends Factory
- {
-     protected $model = Article::class;
-     public function definition()
-     {
-         return [
-             'title' => $this->faker->sentence(),
-             'body' => $this->faker->text(),
-             'tags' => collect(['php', 'ruby', 'java', 'javascript', 'bash'])
-                 ->random(2)
-                 ->values()
-                 ->all(),
+<?php</br></br>
+ namespace Database\Factories;</br>
+ use App\Models\Article;</br>
+ use Illuminate\Database\Eloquent\Factories\Factory;</br>
+ class ArticleFactory extends Factory</br>
+ {</br>
+     protected $model = Article::class;</br>
+     public function definition()</br>
+     {</br>
+         return [</br>
+             'title' => $this->faker->sentence(),</br>
+             'body' => $this->faker->text(),</br>
+             'tags' => collect(['php', 'ruby', 'java', 'javascript', 'bash'])</br>
+                 ->random(2)</br>
+                 ->values()</br>
+                 ->all(),</br>
          ];
      }
  } 
