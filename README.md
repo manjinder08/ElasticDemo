@@ -222,9 +222,9 @@ Now open and edit it (App/Console/Commands/ReindexCommand.php). </br>
 <h3>Step 13 :</h3>
 At last we jus run the last artisan command which we added. </br>
 <b>Command-></b> php artisan search:reindex. </br>
-<h4>The ElasticSearch project is ready for search. You can find the full code above.<h4>
- 
-<h2>Redis</h2>
+<h4>The ElasticSearch project is ready for search. You can find the full code above.<h4></br></br></br>
+</br> 
+<h1>Redis</h1>
 
 Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker. Redis provides data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes, and streams.
 <h3>Step 1:</h3>
