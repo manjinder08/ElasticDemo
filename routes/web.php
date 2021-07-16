@@ -51,16 +51,11 @@ Route::get('/redis', function () {
 Route::get('/redissearch', function(MyController $r){
     
     if($a=Redis::get('data')){  
-        echo "here..........";
-
-        dd($a);      
-        //return json_decode($a);
+        echo "Redis..........";
+        return json_decode($a);
     }
     
     $a = $r->Searchredis(request('query'));
-    
-    // dd($a);
- // return $a;
-    // Redis::setex('data', 60*24, $a);
-    // return json_decode($a);
+    Redis::setex('data',60, $a);
+       return json_decode($a);
 });
