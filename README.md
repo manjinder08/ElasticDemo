@@ -226,3 +226,45 @@ At last we jus run the last artisan command which we added. </br>
  
 <h2>Redis</h2>
 
+Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker. Redis provides data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes, and streams.
+<h3>Step 1:</h3>
+First we install redis in our project. </br>
+<b>Command-> </b>composer require predis/predis </br>
+ 
+<h3>Step 2:</h3>
+
+We may configure our application's <b>Redis</b> via <b>config/database.php </b>. You can find the code above app.
+
+<h3>Step 3: </h3>
+Next we have to make simple controller for simple search on data from database.
+<b>Command-></b> php artisan make:controller MyController </br>
+code in MyController.php like:-</br>
+                                    class MyController extends Controller
+                                    {
+                                        public function Searchredis(string $q=''){
+                                            return Article::query()
+
+                                            ->Where('body', 'LIKE', "%{$q}%")
+                                            ->orWhere('title', 'LIKE', "%{$q}%")
+                                            ->orWhere('tags', 'LIKE', "%{$q}%")
+                                             ->get();
+                                        }
+                                    }</br>
+<h3>Step 4: </h3>
+Now set and get the redis.So we add the code in Routes/Web.php.</br>
+  Code like this:-</br>
+                                                    Route::get('/redissearch', function(MyController $r){
+
+                                                        if($a=Redis::get('data')){  
+                                                            echo "Redis..........";
+                                                            return json_decode($a);
+                                                        }
+
+                                                        $a = $r->Searchredis(request('query'));
+                                                        Redis::setex('data',60, $a);
+                                                           return json_decode($a);
+                                                    });</br>
+<h3>Step 5: </h3>
+At last we can check our redis whether set or not.
+<b>Commands 1-></b>redis-cli</br>
+<b>Commands 2-></b>keys *</br>
