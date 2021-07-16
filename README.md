@@ -265,6 +265,6 @@ Now set and get the redis.So we add the code in Routes/Web.php.</br>
                                                            return json_decode($a);
                                                     });</br>
 <h3>Step 5: </h3>
-At last we can check our redis whether set or not.
+At last we can check our redis whether set or not.</br>
 <b>Commands 1-></b>redis-cli</br>
 <b>Commands 2-></b>keys *</br>
