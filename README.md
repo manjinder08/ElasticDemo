@@ -1,4 +1,4 @@
-<h3>ElasticSearch With Laravel 8</h3>
+<h1>ElasticSearch With Laravel & Redis 8</h1>
 <table style="width:100%">
   <tr>
     <th>Technologies</th>
